@@ -33,5 +33,6 @@ class ServidorCaldeira():
             self._server.stop()
 
 if __name__ == "__main__":
-    srv = ServidorCaldeira(host_ip='0.0.0.0', port=5020)
+    #srv = ServidorCaldeira(host_ip='0.0.0.0', port=5020)
+    srv = ServidorCaldeira(host_ip='127.0.0.1', port=5020)
     srv.execute()

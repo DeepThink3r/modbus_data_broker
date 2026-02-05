@@ -7,4 +7,4 @@ COPY modbus_server.py ./
 
 EXPOSE 5020
 
-CMD ["python", "modbus_server.py""]
+CMD ["python", "modbus_server.py"]
