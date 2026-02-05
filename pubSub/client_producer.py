@@ -23,7 +23,7 @@ def inserir_no_postgres(temp, pressao, vazao):
         conn = psycopg2.connect(**DB_CONFIG)
         cursor = conn.cursor()
 
-        sql = "INSERT INTO leituras_caldeira (temperatura, pressao) VALUES (%s, %s, %s)"
+        sql = "INSERT INTO leituras_caldeira (temperatura, pressao, vazao) VALUES (%s, %s, %s)"
         cursor.execute(sql, (temp, pressao, vazao))
 
         conn.commit()
@@ -39,7 +39,7 @@ def inserir_no_postgres(temp, pressao, vazao):
 
 def coletar_e_enviar():
     # Tenta ler os registradores (endereços 0 e 1)
-    regs = cliente.read_holding_registers(0, 2)
+    regs = cliente.read_holding_registers(0, 3)
 
     if regs:
         temp_bruta = regs[0]
