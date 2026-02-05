@@ -41,10 +41,6 @@ def iniciar_consumidor():
                     print(f"   Canal: {notify.channel}")
                     print(f"   Temp: {dados['temperatura']}°C")
                     print(f"   Pressão: {dados['pressao']} bar")
-                    
-                    # AQUI entraria sua lógica de alerta
-                    if dados['temperatura'] > 88.0:
-                        print("ALERTA: Temperatura crítica!")
 
     except KeyboardInterrupt:
         print("\n Parando consumidor...")
