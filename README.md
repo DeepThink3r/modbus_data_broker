@@ -31,5 +31,18 @@ Criar o banco de dados:
 CREATE DATABASE modbus_broker;
 ```
 
+## Subir o Container do Servidor Modbus
+
+Execute o comando `docker build -t modbus_server . ` no terminal para subir a imagem.
+
+Em seguida execute as seguintes instruções:
+
+```
+docker run -d \
+  --name modbus_caldeira \
+  --network ambiente_modbus \
+  -p 5020:5020 \
+  modbus_server_caldeira
+```
 
 
