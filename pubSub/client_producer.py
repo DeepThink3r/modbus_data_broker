@@ -43,13 +43,11 @@ def coletar_e_enviar():
         temp_bruta = regs[0]
         pressao_bruta = regs[1]
         
-        # Conversão dos valores brutos (Raw) para Engenharia
         temp_final = temp_bruta / 10.0
         pressao_final = pressao_bruta / 100.0
         
         print(f"Modbus -> Temp: {temp_final}°C | Pressão: {pressao_final} bar")
         
-        # Chama a função de inserção
         inserir_no_postgres(temp_final, pressao_final) 
     else:
         print("Falha na leitura do Servidor Modbus")
