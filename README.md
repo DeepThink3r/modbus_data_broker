@@ -10,7 +10,8 @@ docker run -d \
 --network ambiente_modbus \
 -p 5431:5432 \
 -e POSTGRES_PASSWORD=postgres \
--v postgredb:/var/lib/postgresql/data
+-v postgredb:/var/lib/postgresql/data \
+-d postgres
 ```
 Em seguida, na guia _exec_ do container, execute os seguintes comandos:
 
