@@ -31,3 +31,7 @@ class ServidorCaldeira():
         except Exception as erro:
             print("Erro na execução do servidor:", erro)
             self._server.stop()
+
+if __name__ == "__main__":
+    srv = ServidorCaldeira(host_ip='0.0.0.0', port=5020)
+    srv.execute()
