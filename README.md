@@ -3,7 +3,7 @@ Esse projeto consiste na criação de um servidor modbus que irá gerar dados fi
 
 ## Subir o Container do Servidor Modbus
 
-Execute o comando `docker build -t modbus_server . ` no terminal para subir a imagem.
+Execute o comando `docker build -t modbus_server_caldeira . ` no terminal para subir a imagem.
 
 Em seguida execute as seguintes instruções:
 

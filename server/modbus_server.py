@@ -17,23 +17,27 @@ class ServidorCaldeira():
                 f"Servidor Caldeira ativo em {self._server.host}:{self._server.port}")
 
             while True:
-                # Usando endereços 0 e 1 (que o Master lerá como 40001 e 40002)
-                temp = random.randint(800, 900)
-                self._db.set_holding_registers(0, [temp])
+                # Usando endereços 0, 1 e 2 (que o Master lerá como 40001, 40002 e 40003)
+                    base_temp = 4800 # 480.0 °C
+                    temp = base_temp + random.randint(-20, 20)
+                    self._db.set_holding_registers(0, [temp])
 
-                pressao = random.randint(200, 250)
-                self._db.set_holding_registers(1, [pressao])
+                    base_pressao = 6000 # 60.00 bar
+                    pressao = base_pressao + random.randint(-15, 15)
+                    self._db.set_holding_registers(1, [pressao])
 
-                vazao = random.randit(100, 250)
-                self._db.set_holding_registers(2, [vazao])
 
-                print('----STATUS DA CALDEIRA----')
-                print(f'Temp (40001): {temp/10.0} °C')
-                print(f'Pressao (40002): {pressao/100.0} bar')
-                print(f'Vazao (40003): {vazao/10.0} m³/min')
-                print('--------------------------')
+                    base_vazao = 1800 # 180.0 m³/min
+                    vazao = base_vazao + random.randint(-100, 100)
+                    self._db.set_holding_registers(2, [vazao])
 
-                sleep(3)
+                    print('----STATUS DA CALDEIRA----')
+                    print(f'Temp (40001): {temp/10.0} °C')
+                    print(f'Pressao (40002): {pressao/100.0} bar')
+                    print(f'Vazao (40003): {vazao/10.0} m³/min')
+                    print('--------------------------')
+
+                    sleep(3)
 
         except Exception as erro:
             print("Erro na execução do servidor:", erro)
@@ -41,6 +45,6 @@ class ServidorCaldeira():
 
 
 if __name__ == "__main__":
-    # srv = ServidorCaldeira(host_ip='0.0.0.0', port=5020)
-    srv = ServidorCaldeira(host_ip='127.0.0.1', port=5020)
+    srv = ServidorCaldeira(host_ip='0.0.0.0', port=5020)
+    #srv = ServidorCaldeira(host_ip='127.0.0.1', port=5020)
     srv.execute()
