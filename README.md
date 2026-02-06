@@ -1,5 +1,5 @@
 # modbus_data_broker
-Esse projeto consiste na criação de um servidor modbus que irá gerar dados fictícios de sensores, um client python/producer que enviará dados para um broker no Postgres que notificará um consumer.py que, além de consumir os dados, irá carrega-los em um modelo semântico streaming do Power BI.
+Esse projeto consiste na criação de um servidor modbus que irá gerar dados fictícios de sensores, um client python/producer que enviará dados para um broker no Postgres usando NOTIFY/LISTEN que notificará um consumer.py que, além de consumir os dados, irá carrega-los em um modelo semântico streaming do Power BI.
 
 <img width="591" height="270" alt="image" src="https://github.com/user-attachments/assets/0d3538df-5e8d-4af6-a42f-ff2065ad4c43" />
 
@@ -105,6 +105,7 @@ Agora que os dados são consumidos dos eventos gerados pelo NOTIFY do postgres, 
 Com o conjundo de dados recebendo dados, é possível criar um relatório para a exibição das variáveis coletadas
 
 <img width="1395" height="782" alt="image" src="https://github.com/user-attachments/assets/62a8e1d0-23a3-44a7-a56d-ab17db345d43" />
+
 
 
 
