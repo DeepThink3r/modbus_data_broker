@@ -71,6 +71,7 @@ BEGIN
         'id', NEW.id,
         'temperatura', NEW.temperatura,
         'pressao', NEW.pressao,
+		'vazao', NEW.vazao,
         'timestamp', NEW.data_leitura
     );
 
