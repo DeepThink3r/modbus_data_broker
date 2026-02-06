@@ -91,3 +91,9 @@ AFTER INSERT ON leituras_caldeira
 FOR EACH ROW
 EXECUTE FUNCTION notificar_nova_leitura();
 ```
+
+## Visualização de Dados no Power BI
+
+<img width="1395" height="782" alt="image" src="https://github.com/user-attachments/assets/62a8e1d0-23a3-44a7-a56d-ab17db345d43" />
+
+
