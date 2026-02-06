@@ -95,6 +95,13 @@ EXECUTE FUNCTION notificar_nova_leitura();
 
 ## Visualização de Dados no Power BI
 
+Agora que os dados são consumidos dos eventos gerados pelo NOTIFY do postgres, um conjunto de dados streaming no Power BI onde os dados recebidos são configurados e, após concluído, será gerado um endpoint desse conjunto para que seja feito um POST dos dados dos sensores.
+
+<img width="549" height="881" alt="image" src="https://github.com/user-attachments/assets/7203abe7-5014-4f9a-a17d-c3e90746aec4" />
+
+Com o conjundo de dados recebendo dados, é possível criar um relatório para a exibição das variáveis coletadas
+
 <img width="1395" height="782" alt="image" src="https://github.com/user-attachments/assets/62a8e1d0-23a3-44a7-a56d-ab17db345d43" />
+
 
 
