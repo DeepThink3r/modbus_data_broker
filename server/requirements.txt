@@ -1,3 +1,7 @@
 pymodbustcp
 pymodbus
 requests
+fastapi
+asyncpg
+httpx
+dotenv
