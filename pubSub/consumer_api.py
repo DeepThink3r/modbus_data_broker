@@ -19,19 +19,12 @@ DB_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@localhost:
 
 async def enviar_para_power_bi(dados_json):
     async with httpx.AsyncClient() as client:
-        try:
-            # O payload costuma vir como string do NOTIFY, convertemos para dict
-            payload = json.loads(dados_json)
+        
+        # O payload costuma vir como string do NOTIFY, convertemos para dict
+        payload = json.loads(dados_json)
 
-            # Power BI Streaming Dataset espera uma lista [{}, {}]
-            response = await client.post(PBI_ENDPOINT, json=[payload])
-
-            if response.status_code == 200:
-                print(f"Power BI Atualizado: {payload}")
-            else:
-                print(f"Erro PBI: {response.status_code}")
-        except Exception as e:
-            print(f"Erro ao processar notificação: {e}")
+        # Power BI Streaming Dataset espera uma lista [{}, {}]
+        response = await client.post(PBI_ENDPOINT, json=[payload])
 
 # Callback que é executado toda vez que o NOTIFY chega
 def notificacao_recebida(connection, pid, channel, payload):

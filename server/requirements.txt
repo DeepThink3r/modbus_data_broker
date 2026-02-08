@@ -5,3 +5,4 @@ fastapi
 asyncpg
 httpx
 dotenv
+uvicorn
