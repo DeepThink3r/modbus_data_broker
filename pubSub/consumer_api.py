@@ -53,11 +53,7 @@ async def escutar_postgres():
 async def startup_event():
     # Inicia a escuta do banco de dados em segundo plano assim que o FastAPI sobe
     asyncio.create_task(escutar_postgres())
-
-
-@app.get("/status")
-async def status():
-    return {"status": "operacional", "monitorando": "novas_leituras"}
+    
 
 if __name__ == "__main__":
     import uvicorn
