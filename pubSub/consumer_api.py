@@ -31,7 +31,6 @@ async def enviar_para_power_bi(dados_json):
                     "timestmp": timestamp_pbi
                 }
             ]
-            # ----------------------------------------------------------------------
 
             response = await client.post(PBI_ENDPOINT, json=payload_formatado)
             print(f"Power BI Atualizado: {payload_formatado}")
