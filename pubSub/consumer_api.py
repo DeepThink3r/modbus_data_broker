@@ -23,7 +23,7 @@ async def enviar_para_power_bi(dados_json):
             agora = datetime.now()
             timestamp_pbi = agora.strftime('%d/%m/%Y %H:%M:%S')
 
-            payload_formatado = [
+            payload = [
                 {
                     "40001_Temp": float(dados['temperatura']),
                     "40002_Pressao": float(dados['pressao']),
@@ -32,8 +32,8 @@ async def enviar_para_power_bi(dados_json):
                 }
             ]
 
-            response = await client.post(PBI_ENDPOINT, json=payload_formatado)
-            print(f"Power BI Atualizado: {payload_formatado}")
+            await client.post(PBI_ENDPOINT, json=payload)
+            print(f"Power BI Atualizado: {payload}")
 
         except Exception as e:
             print(f"Erro ao processar notificação: {e}")
@@ -43,7 +43,6 @@ def notificacao_recebida(connection, pid, channel, payload):
     asyncio.create_task(enviar_para_power_bi(payload))
 
 async def escutar_postgres():
-    # Conecta usando asyncpg
     conn = await asyncpg.connect(DB_URL)
     await conn.add_listener('novas_leituras', notificacao_recebida)
     print("Escutando canal 'novas_leituras' no Postgres...")
