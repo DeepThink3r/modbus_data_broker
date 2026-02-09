@@ -38,7 +38,7 @@ def inserir_no_postgres(temp, pressao, vazao):
 
 
 def coletar_e_enviar():
-    # Tenta ler os registradores (endereços 0 e 1)
+    # Tenta ler os registradores (endereços 0 a 3)
     regs = cliente.read_holding_registers(0, 3)
 
     if regs:

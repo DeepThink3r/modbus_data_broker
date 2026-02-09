@@ -3,7 +3,7 @@ import requests
 import json
 import select
 import psycopg2
-from datetime import datetime, timezone
+from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -35,10 +35,8 @@ def enviar_ao_powerbi(dados):
     
     try:
         response = requests.post(POWER_BI_URL, json=payload)
-        if response.status_code == 200:
-            print(f"Dados enviados ao Power BI")
-        else:
-            print(f"Erro Power BI: {response.status_code} - {response.text}")
+        print(f"Power BI Atualizado: {response}")
+
     except Exception as e:
         print(f"Falha na requisição: {e}")
 
