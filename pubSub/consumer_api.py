@@ -17,10 +17,9 @@ DB_URL = f"postgresql://{os.getenv('DB_USER')}:{os.getenv('DB_PASS')}@localhost:
 async def enviar_para_power_bi(dados_json):
     async with httpx.AsyncClient() as client:
         try:
-            # Converte a string do NOTIFY para dicionário
+
             dados = json.loads(dados_json)
 
-            # --- O SEGREDO ESTÁ AQUI: REPETIR O MAPEAMENTO DO CÓDIGO QUE FUNCIONA ---
             agora = datetime.now()
             timestamp_pbi = agora.strftime('%d/%m/%Y %H:%M:%S')
 
@@ -35,10 +34,10 @@ async def enviar_para_power_bi(dados_json):
             # ----------------------------------------------------------------------
 
             response = await client.post(PBI_ENDPOINT, json=payload_formatado)
-            print(f"✅ Power BI Atualizado: {payload_formatado}")
+            print(f"Power BI Atualizado: {payload_formatado}")
 
         except Exception as e:
-            print(f"❌ Erro ao processar notificação: {e}")
+            print(f"Erro ao processar notificação: {e}")
 
 def notificacao_recebida(connection, pid, channel, payload):
     # Criamos a tarefa assíncrona para o envio
@@ -48,7 +47,7 @@ async def escutar_postgres():
     # Conecta usando asyncpg
     conn = await asyncpg.connect(DB_URL)
     await conn.add_listener('novas_leituras', notificacao_recebida)
-    print("🚀 Escutando canal 'novas_leituras' no Postgres via FastAPI...")
+    print("Escutando canal 'novas_leituras' no Postgres...")
     
     while True:
         await asyncio.sleep(1)
