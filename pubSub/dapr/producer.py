@@ -27,3 +27,24 @@ def publicar_no_dapr(temp, pressao, vazao):
             print(f"Erro no Dapr: {response.text}")
     except Exception as e:
         print(f"Erro de conexão com Sidecar: {e}")
+
+
+def coletar_e_enviar():
+    regs = cliente.read_holding_registers(0, 3)
+    if regs:
+        temp_final = regs[0] / 10.0
+        pressao_final = regs[1] / 100.0
+        vazao_final = regs[2] / 10.0
+        
+        # O trabalho do Publisher termina aqui
+        publicar_no_dapr(temp_final, pressao_final, vazao_final)
+    else:
+        print("Falha na leitura Modbus")
+
+if __name__ == "__main__":
+    try:
+        while True:
+            coletar_e_enviar()
+            time.sleep(5)
+    except KeyboardInterrupt:
+        cliente.close()
