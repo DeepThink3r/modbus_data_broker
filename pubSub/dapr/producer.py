@@ -1,8 +1,12 @@
 import os
 import time
 import logging
-import requests # Usamos requests para falar com o Sidecar
+from fastapi import FastAPI
+import requests
 from pyModbusTCP.client import ModbusClient
+
+# FastAPI para fazer o post no Dapr
+app = FastAPI()
 
 
 #Configuração de logging
@@ -49,10 +53,13 @@ def coletar_e_enviar():
         logging.error("Falha na leitura Modbus")
 
 
+@app.post("/agendador-caldeira")
+def trigger_event():
+    logging.info("Sinal de agendamento recebido do Dapr.")
+    coletar_e_enviar()
+
+    return {"status": "coleta_iniciada"}
+
 if __name__ == "__main__":
-    try:
-        while True:
-            coletar_e_enviar()
-            time.sleep(5)
-    except KeyboardInterrupt:
-        cliente.close()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
