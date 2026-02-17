@@ -33,11 +33,8 @@ async def processar_leituras(event = Body(...)):
     leituras = event.get("data")
 
     if leituras:
-
         agora = datetime.now() 
-        
         timestamp_pbi = agora.isoformat()
-
         payload_pbi = [
             {
                 "40001_Temp": float(leituras.get('temperatura', 0)),
@@ -46,7 +43,6 @@ async def processar_leituras(event = Body(...)):
                 "timestmp": timestamp_pbi
             }
         ]
-
         async with httpx.AsyncClient() as client:
             try:
                 response = await client.post(PBI_ENDPOINT, json=payload_pbi)
