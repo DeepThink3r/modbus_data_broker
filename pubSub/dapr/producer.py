@@ -7,7 +7,7 @@ from pyModbusTCP.client import ModbusClient
 
 DAPR_PORT = "3500"
 PUBSUB_NAME = "industrial-pubsub"
-TOPIC_NAME = "leituras_caldeira"
+TOPIC_NAME = "leituras-caldeira"
 DAPR_URL = f"http://localhost:{DAPR_PORT}/v1.0/publish/{PUBSUB_NAME}/{TOPIC_NAME}"
 
 cliente = ModbusClient(host='localhost', port=5020, auto_open=True)
