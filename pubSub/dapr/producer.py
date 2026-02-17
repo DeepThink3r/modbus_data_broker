@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO,
 #Variáveis globais
 DAPR_PORT = os.getenv("DAPR_HTTP_PORT", "3500")
 PUBSUB_NAME = "industrial-pubsub"
-TOPIC_NAME = "leituras_caldeira"
+TOPIC_NAME = "leituras-caldeira"
 DAPR_URL = f"http://localhost:{DAPR_PORT}/v1.0/publish/{PUBSUB_NAME}/{TOPIC_NAME}"
 
 # Cliente modbus
